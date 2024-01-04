@@ -1,19 +1,20 @@
-def pofi(a):
-    # Since i^1 = i and i^2 = -1, we can use the modulo operator to find the remainder
-    # when a is divided by 4, and determine the result accordingly.
-    remainder = a % 4
-    
-    if remainder == 0:
-        return '1'
-    elif remainder == 1:
-        return 'i'
-    elif remainder == 2:
-        return '-1'
-    else:
-        return '-i'
+def print_diamond(rows):
+    for i in range(1, rows + 1, 2):
+        print(" " * ((rows - i) // 2) + "*" * i)
 
-# Example usage:
-print(pofi(0))  # Output: '1'
-print(pofi(1))  # Output: 'i'
-print(pofi(2))  # Output: '-1'
-print(pofi(3))  # Output: '-i'
+    for i in range(rows - 2, 0, -2):
+        print(" " * ((rows - i) // 2) + "*" * i)
+
+def main():
+    try:
+        n = int(input("Masukkan jumlah baris (angka ganjil): "))
+        if n % 2 == 0:
+            raise ValueError("Masukkan jumlah baris yang ganjil.")
+        
+        print_diamond(n)
+
+    except ValueError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
